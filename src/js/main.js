@@ -1,0 +1,468 @@
+(function($) {
+    $.fn.inputFilter = function(inputFilter) {
+      return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+        if (inputFilter(this.value)) {
+          this.oldValue = this.value;
+          this.oldSelectionStart = this.selectionStart;
+          this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+          this.value = this.oldValue;
+          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        } else {
+          this.value = "";
+        }
+      });
+    };
+  }(jQuery));
+
+$('body').on('submit', 'form', (e) => {
+    e.preventDefault();
+});
+
+let features = new Swiper('.features .swiper-container', {
+    slidesPerView: 3,
+    slidesPerGroup: 3,
+    spaceBetween: 20,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    navigation: {
+        nextEl: '.features .swiper-button-next',
+        prevEl: '.features .swiper-button-prev',
+    },
+    pagination: {
+        el: '.features .swiper-pagination',
+    }
+});
+
+let reviews = new Swiper('.reviews .swiper-container', {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.reviews .swiper-pagination',
+    }
+});
+
+let portfolioMain = new Swiper('.portfolio .main', {
+    slidesPerView: 1,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    allowTouchMove: false
+});
+let portfolioNavigation = new Swiper('.portfolio .nav', {
+    slidesPerView: 4,
+    spaceBetween: 10,
+    loop: true,
+    slideToClickedSlide: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    navigation: {
+        nextEl: '.portfolio .swiper-button-next',
+        prevEl: '.portfolio .swiper-button-prev',
+    },
+    pagination: {
+        el: '.portfolio .swiper-pagination',
+    },
+    thumbs: {
+        swiper: portfolioMain,
+    },
+});
+
+if ($('#phone-mask').length > 0) {
+    var phoneMask = IMask(
+        document.getElementById('phone-mask'), {
+            mask: '+{7} (000) 000 00 00'
+    });
+}
+
+if ($('#phone-mask2').length > 0) {
+    var phoneMask = IMask(
+        document.getElementById('phone-mask2'), {
+            mask: '+{7} (000) 000 00 00'
+    });
+}
+
+// calculator
+
+let stepsCount = $('.calculator__step').length;
+
+for (let i = 0; i <= stepsCount; i++) {
+    $(`.calculator__step:nth-child(${i})`).attr('data-step', i);
+    $(`.calculator__progress-step:nth-child(${i})`).attr('data-step', i);
+}
+
+let updateProgressbar = () => {
+    let currentProgress = Math.round((100 / (stepsCount - 1)) * (parseInt($('.calculator__step.active').attr('data-step')) - 1));
+
+    $('.calculator__percent').text(currentProgress);
+    $('.calculator__line').animate({ 'width': `${currentProgress}%` });
+}
+
+// go to next step
+$('body').on('click', '.calculator__next', (e) => {
+    let activeStep = parseInt($('.calculator__step.active').attr('data-step'));
+
+    if (activeStep < stepsCount) {
+        $('.calculator__step').removeClass('visible');
+        getUserInfo(activeStep);
+
+        if (!stepValidate(activeStep + 1)) {
+            $('.calculator__next').addClass('disable');
+        }
+
+        setTimeout(() => {
+            activeStep + 1 === 3  || activeStep + 1 === 4 ? $('.calculator__body').addClass('padding') : $('.calculator__body').removeClass('padding');
+            activeStep + 1 === 5 ? $('.calculator__controls').addClass('hide') : $('.calculator__controls').removeClass('hide');
+            $('.calculator__step').removeClass('active');
+            $(`.calculator__step[data-step="${activeStep + 1}"]`).addClass('active').addClass('visible');
+            updateProgressbar();
+
+            if (activeStep + 1 === 5) {
+                
+
+                let full = new Odometer({
+                    el: $('.full')[0], 
+                    format: '( ddd) dd',
+                    theme: 'minimal',
+                    duration: 1000
+                });
+                full.render();
+                $('.full').text(cost());
+
+                let result = new Odometer({
+                    el: $('.calculator__result .price')[0], 
+                    format: '( ddd) dd',
+                    theme: 'minimal',
+                    duration: 1000
+                });
+                result.render();
+                $('.calculator__result .price').text(cost() / user.area);
+            }
+
+            setTimeout(() => {                
+                $(`.calculator__progress-step[data-step="${activeStep + 1}"]`).addClass('active');
+            }, 300);
+        }, 200);
+    }
+
+    if (activeStep + 1 === stepsCount) $('.calculator__next').addClass('disable');
+
+    if (activeStep > 0) $('.calculator__prev').removeClass('disable');
+
+    $(`.calculator__step[data-step="${activeStep + 1}"]`).hasClass('bg')? $('.calculator__content').addClass('bg') : $('.calculator__content').removeClass('bg');
+
+    if ($(window).width() <= 767) $("html, body").stop().animate({scrollTop:0});
+});
+
+// go to prev step
+$('body').on('click', '.calculator__prev', (e) => {
+    let activeStep = parseInt($('.calculator__step.active').attr('data-step'));
+
+    if (activeStep > 1) {
+        $('.calculator__step').removeClass('visible');
+        activeStep - 1 === 3 || activeStep - 1 === 4 ? $('.calculator__body').addClass('padding') : $('.calculator__body').removeClass('padding');
+        setTimeout(() => {
+            $('.calculator__step').removeClass('active');
+            $(`.calculator__step[data-step="${activeStep - 1}"]`).addClass('active').addClass('visible');
+            $(`.calculator__progress-step[data-step="${activeStep}"]`).removeClass('active');
+            setTimeout(() => {
+                updateProgressbar();
+            }, 300);
+        }, 200);
+    }
+
+    if ($('.calculator__next').is('.disable')) $('.calculator__next').removeClass('disable');
+
+    if (activeStep === 2) $('.calculator__prev').addClass('disable');
+
+    $(`.calculator__step[data-step="${activeStep - 1}"]`).hasClass('bg')? $('.calculator__content').addClass('bg') : $('.calculator__content').removeClass('bg');
+});
+
+$('body').on('click', '.calculator__step[data-step="1"] input[type="radio"]', (e) => {
+    $('.calculator__next').removeClass('disable');
+});
+
+$('body').on('click', '.calculator__step[data-step="2"] input[type="radio"]', (e) => {
+    if ($('.calculator__step[data-step="2"] input[type="radio"]:checked').length === 3) {
+        $('.calculator__next').removeClass('disable');
+    }
+});
+
+$('body').on('click', '.calculator__step[data-step="3"] input[type="radio"]', (e) => {
+    $('.calculator__next').removeClass('disable');
+});
+
+$('body').on('click', '.calculator__step[data-step="4"] input[type="radio"]', (e) => {
+    $('.calculator__next').removeClass('disable');
+});
+
+let stepValidate = (step) => {
+    if (step === 1 && $('.calculator__step[data-step="1"] input[type="radio"]:checked').length === 1) {
+        return true;
+    } else if (step === 2 && $('.calculator__step[data-step="2"] input[type="radio"]:checked').length === 3) {
+        return true;
+    } else if (step === 3 && $('.calculator__step[data-step="3"] input[type="radio"]:checked').length === 1) {
+        return true;
+    } else if (step === 4 && $('.calculator__step[data-step="4"] input[type="radio"]:checked').length === 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+let user = {
+    area: 0,
+    rooms: 0,
+    type: null,
+    floor: null,
+    roof: null,
+    walls: null,
+    toilet: false,
+    heatFloow: false,
+    smartHouse: false,
+    defend: false,
+    other: false,
+    comment: null,
+    project: null,
+    time: null,
+}
+
+let string = (num) => {
+    return `.calculator__step[data-step="${num}"]`;
+}
+
+let getUserInfo = (step) => {
+    if (step === 1) {
+        user.area = $('.area-value').val();
+        user.rooms = $('.rooms-value').val();
+        user.type = $(`${string(1)} input[type="radio"]:checked`).val();
+    } if (step === 2) {
+        user.floor = $(`${string(2)} input[name="floor"]:checked`).val();
+        user.roof = $(`${string(2)} input[name="roof"]:checked`).val();
+        user.walls = $(`${string(2)} input[name="walls"]:checked`).val();
+        user.toilet = $(`${string(2)} input[name="toilet"]`).is(':checked') ? true : false;
+        user.heatFloow = $(`${string(2)} input[name="heatFloow"]`).is(':checked') ? true : false;
+        user.smartHouse = $(`${string(2)} input[name="smartHouse"]`).is(':checked') ? true : false;
+        user.defend = $(`${string(2)} input[name="defend"]`).is(':checked') ? true : false;
+        user.other = $(`${string(2)} input[name="other"]`).is(':checked') ? true : false;
+        user.comment = $(`${string(2)} textarea`).val();
+    } if (step === 3) {
+        user.project = $(`${string(3)} input[name="project"]:checked`).val();
+    } if (step === 4) {
+        user.time = $(`${string(4)} input[name="time"]:checked`).val();
+    } else {
+        return false;
+    }
+}
+
+let cost = () => {
+    let type = 0;
+
+    switch (user.type) {
+        case 'Стандарт':
+            type = 12000;
+            break;
+        case 'Комфорт':
+            type = 14000;
+            break;
+        case 'Индивидуальный':
+            type = 8000;
+            break;
+    }
+
+    let floor = 0;
+
+    switch (user.floor) {
+        case 'Ламинат':
+            floor = 0;
+            break;
+        case 'Паркет':
+            floor = 2500;
+            break;
+        case 'Премиум ламинат':
+            floor = 820;
+            break;
+    }
+
+    let roof = 0;
+
+    switch (user.roof) {
+        case 'Натяжной':
+            roof = 0;
+            break;
+        case 'Штукатурка':
+            roof = 1540;
+            break;
+        case 'Гипсокартон':
+            roof = 2120;
+            break;
+    }
+
+    let walls = 0;
+
+    switch (user.walls) {
+        case 'Обои под покраску':
+            walls = 0;
+            break;
+        case 'Покраска':
+            walls = 500;
+            break;
+        case 'Штукатурка':
+            walls = 1500;
+            break;
+    }
+
+    let toilet = user.toilet ? 20000 : 0;
+    let heatFloow = user.heatFloow ? 1000 : 0;
+    let smartHouse = user.smartHouse ? 100000 : 0;
+    let defend = user.defend ? 31000 : 0;
+
+    let sum = (user.area * type) + (user.area * floor) + (user.area * roof) + (user.area * walls) + toilet + (user.area * heatFloow) + smartHouse + defend;
+
+    return sum;
+}
+
+var areaSlider = document.getElementById('slider-area');
+
+noUiSlider.create(areaSlider, {
+    start: [40],
+    connect: 'lower',
+    range: {
+        'min': 30,
+        'max': 70
+    },
+    format: wNumb({
+        decimals: 0
+    }),
+});
+
+let areaSliderSteps = [];
+
+for (let i = 1; i <= $('#slider-area').next().find('span').length; i++) {
+    $('#slider-area').next().find(`span:nth-child(${i})`).attr('data-num', parseInt($('#slider-area').next().find(`span:nth-child(${i})`).text()))
+    areaSliderSteps.push(parseInt($('#slider-area').next().find(`span:nth-child(${i})`).text()));
+}
+
+let positionArea = 0;
+areaSlider.noUiSlider.on('update', function (values, handle) {
+    for (let i = 1; i <= areaSliderSteps.length; i++) {
+        $('#slider-area').prev().find('input').val(values[0])
+
+        if (values[0] >= areaSliderSteps[i] && values[0] > positionArea) {
+            $('#slider-area').next().find(`span[data-num="${areaSliderSteps[i]}"]`).addClass('active');
+        }
+
+        if (values[0] <= areaSliderSteps[i] && values[0] < positionArea) {
+            $('#slider-area').next().find(`span[data-num="${areaSliderSteps[i]}"]`).removeClass('active');
+        }
+    }
+
+    positionArea = values[0];
+});
+
+$('body').on('blur', '.area-value', (e) => {
+    areaSlider.noUiSlider.set([e.target.value]);
+});
+
+var roomsSlider = document.getElementById('slider-rooms');
+
+noUiSlider.create(roomsSlider, {
+    start: [2],
+    connect: 'lower',
+    step: 1,
+    range: {
+        'min': 0,
+        'max': 9
+    },
+    format: wNumb({
+        decimals: 0
+    }),
+});
+
+let roomsSliderSteps = [];
+
+for (let i = 1; i <= $('#slider-rooms').next().find('span').length; i++) {
+    $('#slider-rooms').next().find(`span:nth-child(${i})`).attr('data-num', parseInt($('#slider-rooms').next().find(`span:nth-child(${i})`).text()))
+    roomsSliderSteps.push(parseInt($('#slider-rooms').next().find(`span:nth-child(${i})`).text()));
+}
+
+let positionRooms = 0;
+roomsSlider.noUiSlider.on('update', function (values, handle) {
+    for (let i = 1; i <= roomsSliderSteps.length; i++) {
+        if (values[0] === '0') {
+            $('#slider-rooms').prev().find('input').val('студия');
+        } else {
+            $('#slider-rooms').prev().find('input').val(values[0]);
+        }
+
+        if (values[0] >= roomsSliderSteps[i] && values[0] > positionRooms) {
+            $('#slider-rooms').next().find(`span[data-num="${roomsSliderSteps[i]}"]`).addClass('active');
+        }
+
+        if (values[0] <= roomsSliderSteps[i] && values[0] < positionRooms) {
+            $('#slider-rooms').next().find(`span[data-num="${roomsSliderSteps[i]}"]`).removeClass('active');
+        }
+    }
+
+    positionRooms = values[0];
+});
+
+$(".rooms-value").inputFilter(function(value) {
+    return /^-?\d*$/.test(value); });
+
+$('body').on('blur', '.rooms-value', (e) => {
+    roomsSlider.noUiSlider.set([e.target.value]);
+});
+
+// textarea counter
+
+function countChar(val) {
+    var len = val.value.length;
+    if (len > 250) {
+        val.value = val.value.substring(0, 250);
+    } else {
+        $('.textarea__count span').text(len);
+    }
+};
+
+// modals
+
+// show modal
+$('body').on('click', '[data-modal]:not(.modal)', (e) => {
+    if (!$('.backdrop').hasClass('active')) $('.backdrop').addClass('active');
+    $('.modal.active').removeClass('active');
+    $(`.modal[data-modal="${$(e.currentTarget).attr('data-modal')}"]`).addClass('active');
+
+    if ($(e.currentTarget).attr('data-modal') === 'thanks') {
+        setTimeout(() => {
+            $('.modal.active').find('svg').addClass('animate');
+        }, 100);
+    }
+});
+
+// close modal events
+let closeModal = () => {
+    $('.backdrop').removeClass('active');
+    $('.modal').removeClass('active');
+    $('.modal').find('svg').removeClass('animate');
+}
+
+$('body').on('click', '.modal__close, .modal .close', closeModal);
+
+$('body').on('click', '.backdrop', (e) => {
+    if ($(e.target)[0].className === 'backdrop active') closeModal();
+});
+
+// close modal on press ESC
+$(document).keyup((e) => {
+    if (e.keyCode === 27 && $('.backdrop').hasClass('active')) closeModal();
+});
