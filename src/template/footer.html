@@ -1,33 +1,80 @@
 <div class="backdrop">
     <div class="modal" data-modal="thanks">
-        <div class="modal__close"></div>
         <div class="modal__content">
-            <div class="modal__close"></div>
             <div class="modal__body">
                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="29.9999" cy="30.1127" r="28.8241" stroke="#00CE52"/>
-                    <rect class="l1" x="17.1621" y="30.1475" width="1.11981" height="13.9354" rx="0.559903" transform="rotate(-45 17.1621 30.1475)" fill="#00CE52"/>
-                    <rect class="l2" x="44.5547" y="21.1216" width="1.11981" height="25.7034" rx="0.559903" transform="rotate(45 44.5547 21.1216)" fill="#00CE52"/>
+                    <circle cx="29.9999" cy="30.1127" r="28.8241" stroke="#FF9900"/>
+                    <rect class="l1" x="17.1621" y="30.1475" width="1.11981" height="13.9354" rx="0.559903" transform="rotate(-45 17.1621 30.1475)" fill="#FF9900"/>
+                    <rect class="l2" x="44.5547" y="21.1216" width="1.11981" height="25.7034" rx="0.559903" transform="rotate(45 44.5547 21.1216)" fill="#FF9900"/>
                 </svg>
                 
-                <p><strong>Спасибо за заявку!</strong> <br> Наш менеджер свяжется с вами в течение 10 минут, <br> оставайтесь на связи</p>
+                <p><strong>Спасибо за заявку!</strong> <br> Наш менеджер свяжется с вами, <br> оставайтесь на связи</p>
                 <a href="javascript:void(0)" class="btn close">Закрыть</a>
             </div>
         </div>
     </div>
 
     <div class="modal" data-modal="callback">
-        <div class="modal__close"></div>
         <div class="modal__content">
-            <div class="modal__close"></div>
-            <div class="modal__header">
-                <div class="modal__title">Обратный звонок</div>
-            </div>
             <div class="modal__body">
-               <form action="">
-                   <input type="text" name="phonemask">
-                   <button type="submit" data-modal="thanks" class="btn">Жду звонок</button>
-               </form>
+                <h2>Обратный <span class="orange">звонок</span></h2>
+                <div class="subtitle">Оставьте свои контакты, и менеджер с вами свяжется</div>
+
+               <div class="callback form">
+                    <form action="">
+                        <span>Оставьте номер телефона</span>
+        
+                        <div class="form-group">
+                            <input id="phone-mask" type="text" placeholder="+7 (---) --- -- --">
+                            <button data-modal="thanks" class="btn">Оставить</button>
+                        </div>
+                    </form>
+               </div>
+
+               <div class="social">
+                    <span>Задать вопрос напрямую здесь:</span>
+                    <div class="social__list line">
+                        <div>
+                            <a href="javascript:void(0)" class="btn btn-blue"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-telegram"></use></svg> Telegram</a>
+                            <a href="javascript:void(0)" class="btn btn-green"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-whatsapp"></use></svg> What’s App</a>
+                            <a href="javascript:void(0)" class="btn btn-purple"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-viber"></use></svg> Viber</a>
+                        </div>
+                        <a href="javascript:void(0)">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-modal="order">
+        <div class="modal__content">
+            <div class="modal__body">
+                <h2>Заказать <span class="orange">ремонт</span></h2>
+                <div class="subtitle">Оставьте свои контакты, и мы свяжемся с вами для составления
+                    сметы</div>
+
+               <div class="callback form">
+                    <form action="">
+                        <span>Оставьте номер телефона</span>
+        
+                        <div class="form-group">
+                            <input id="phone-mask" type="text" placeholder="+7 (---) --- -- --">
+                            <button data-modal="thanks" class="btn">Оставить</button>
+                        </div>
+                    </form>
+               </div>
+
+               <div class="social">
+                    <span>Задать вопрос напрямую здесь:</span>
+                    <div class="social__list line">
+                        <div>
+                            <a href="javascript:void(0)" class="btn btn-blue"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-telegram"></use></svg> Telegram</a>
+                            <a href="javascript:void(0)" class="btn btn-green"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-whatsapp"></use></svg> What’s App</a>
+                            <a href="javascript:void(0)" class="btn btn-purple"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-viber"></use></svg> Viber</a>
+                        </div>
+                        <a href="javascript:void(0)">Политика конфиденциальности</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

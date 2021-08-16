@@ -46,11 +46,12 @@
 <!-- START CONTENT  -->
 
 <section class="main">
+    <img src="img/main-mobile.jpg" alt="" class="mobile">
     <div class="container">
         <h1><span class="orange">Качественный</span> <br> ремонт</h1>
         <div class="subtitle">За адекватные деньги</div>
         <div class="main__text">Компания «Проремонт» специализируется на ремонте квартир в <br> новостройках.</div>
-        <a href="javascript:void(0)" class="btn">Заказать ремонт</a>
+        <a href="javascript:void(0)" class="btn" data-modal="order">Заказать ремонт</a>
     </div>
 </section>
 
@@ -136,7 +137,7 @@
 <section class="cheap">
     <div class="container">
         <div class="cheap__wrap">
-            <h2>Дешевый ремонт? <span class="orange">Да не <br> дай бог!</span></h2>
+            <h2>Дешевый <br class="mobile"> ремонт? <span class="orange">Да не <br> дай бог!</span></h2>
             <div class="cheap__text">Желание сэкономить на ремонте абсолютно нормальное явление. Но прежде чем <br> обращаться в компанию из категории «подешевле», учтите минусы такого решения.</div>
             <div class="cheap__info">Проблемы могут возникнуть на этапах:</div>
             <div class="cheap__icons">
@@ -146,7 +147,7 @@
                 </div>
                 <div class="cheap__item">
                     <div class="cheap__icon"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-line"></use></svg></div>
-                    Разводки электрики <br> и сантехники
+                    Разводки электрики <br> и&nbsp;сантехники
                 </div>
             </div>
         </div>
@@ -156,7 +157,7 @@
 
 <section class="happen">
     <div class="container">
-        <h2 class="center">Но если вы всё же решили <br> <span class="orange">«дешево и сердито»?</span></h2>
+        <h2 class="center">Но если вы всё же <br class="mobile"> решили <br> <span class="orange">«дешево и <br class="mobile"> сердито»?</span></h2>
         <div class="happen__text">Что же вас ждёт?</div>
         <div class="happen__icon"><img src="img/icons/question.png" alt=""></div>
     </div>
@@ -165,6 +166,8 @@
 <div class="step step1">
     <img src="img/o.png" alt="" class="step__figure">
     <div class="container">
+        <img src="img/people.jpg" alt="">
+        <img src="img/people-mobile.jpg" class="mobile" alt="">
         <div class="step__content">
             <div class="step__num">01</div>
             <h2>Специалисты <span class="orange">низкой <br>
@@ -179,7 +182,6 @@
 
             <img src="img/icons/grid.svg" alt="" class="step__grid">
         </div>
-        <img src="img/people.jpg" alt="">
     </div>
 </div>
 
@@ -208,6 +210,8 @@
 
 <div class="step step3">
     <div class="container">
+        <img src="img/picture.jpg" alt="">
+        <img src="img/picture-mobile.jpg" class="mobile" alt="">
         <div class="step__content">
             <div class="step__num">03</div>
             <h2><span class="orange">Непредвиденные</span> <br> траты</h2>
@@ -218,12 +222,11 @@
 
             <div class="step__bottom"><span>Заплатил вчера, заплатишь и завтра!</span></div>
         </div>
-        <img src="img/picture.jpg" alt="">
         <img src="img/dollar4.png" alt="" class="dollar">
     </div>
 </div>
 
-<section class="happen">
+<section class="happen smile">
     <div class="container">
         <h2 class="center">Подведём <span class="orange">итог?</span></h2>
         <div class="happen__subtitle">Денег нет...</div>
@@ -339,26 +342,28 @@
 
 <section class="callback">
     <div class="container">
+        <img src="img/house.jpg" alt="">
+
         <div class="callback__block">
             <h2>Качественный ремонт <span class="orange">стоит <br> своих денег!</span></h2>
             <div class="callback__text">Сотрудничая с нами вы заплатите ровно столько, сколько потребуется для <br>
                 качественного ремонта. <span class="orange">ПроРемонт</span> - лучшее соотношение цены и <br> качества</div>
             <div class="callback__controls">
-                <a href="javascript:void(0)" class="btn">заказать обратный звонок</a>
+                <a href="javascript:void(0)" data-modal="callback" class="btn">заказать <span class="mobile">обратный </span>звонок</a>
                 <span><strong>Ищете компанию, которой можно <br> доверить ремонт без опасений?</strong> <br> Вы её нашли!</span>
+                <span class="mobile"><strong>Ищете компанию, которой <br> можно доверять?</strong> <br> Вы её нашли!</span>
             </div>
         </div>
-        <img src="img/house.jpg" alt="">
     </div>
 </section>
 
 <section class="help">
     <div class="container">
         <div class="help__block">
-            <h2>Мы поможем вам <br> сэкономить <span class="orange">на этапе замера</span></h2>
+            <h2>Мы&nbsp;поможем вам <br> сэкономить <span class="orange">на&nbsp;этапе замера</span></h2>
             <div class="help__text">Мы гарантируем стопроцентную точность замера благодаря опыту. Всё <br>известно заранее, прозрачно и честно</div>
             <div class="callback__controls">
-                <a href="javascript:void(0)" class="btn">оставить контакты</a>
+                <a href="javascript:void(0)" data-modal="callback" class="btn">оставить контакты</a>
                 <span><strong>Оставьте свои контактные данные</strong> <br> Замерщик обязательно свяжется с вами</span>
             </div>
             <img src="img/bank.png" alt="" class="help__img">
@@ -489,13 +494,13 @@
                             </div>
                         </div>
                         <div class="portfolio__item">
-                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g2.jpg" style="background-image: url('img/g2.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g2.jpg" data-src="img/g2.jpg" style="background-image: url('img/g2.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
-                            <div class="portfolio__item" style="background-image: url('img/g3.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g3.jpg" style="background-image: url('img/g3.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
-                            <div class="portfolio__item" style="background-image: url('img/g4.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g4.jpg" style="background-image: url('img/g4.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
                         </div>
@@ -509,33 +514,13 @@
                             </div>
                         </div>
                         <div class="portfolio__item">
-                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g4.jpg" style="background-image: url('img/g2.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g2.jpg" data-src="img/g2.jpg" style="background-image: url('img/g2.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
-                            <div class="portfolio__item" style="background-image: url('img/g3.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g3.jpg" style="background-image: url('img/g3.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
-                            <div class="portfolio__item" style="background-image: url('img/g4.jpg');">
-                                <div class="portfolio__zoom"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="portfolio__item" style="background-image: url('img/g1.jpg');">
-                            <div class="portfolio__zoom"></div>
-                            <div class="portfolio__info">
-                                <div class="portfolio__title">Капитальный ремонт кухни <div class="portfolio__s">43 м<sup>2</sup></div></div>
-                                <div class="portfolio__addr">Г. Москва, ул. Братеевская 6/1</div>
-                            </div>
-                        </div>
-                        <div class="portfolio__item">
-                            <div class="portfolio__item" style="background-image: url('img/g2.jpg');">
-                                <div class="portfolio__zoom"></div>
-                            </div>
-                            <div class="portfolio__item" style="background-image: url('img/g3.jpg');">
-                                <div class="portfolio__zoom"></div>
-                            </div>
-                            <div class="portfolio__item" style="background-image: url('img/g4.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g4.jpg" style="background-image: url('img/g4.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
                         </div>
@@ -549,13 +534,33 @@
                             </div>
                         </div>
                         <div class="portfolio__item">
-                            <div class="portfolio__item" style="background-image: url('img/g2.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g2.jpg" data-src="img/g2.jpg" style="background-image: url('img/g2.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
-                            <div class="portfolio__item" style="background-image: url('img/g3.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g3.jpg" style="background-image: url('img/g3.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
-                            <div class="portfolio__item" style="background-image: url('img/g4.jpg');">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g4.jpg" style="background-image: url('img/g4.jpg');">
+                                <div class="portfolio__zoom"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="portfolio__item" style="background-image: url('img/g1.jpg');">
+                            <div class="portfolio__zoom"></div>
+                            <div class="portfolio__info">
+                                <div class="portfolio__title">Капитальный ремонт кухни <div class="portfolio__s">43 м<sup>2</sup></div></div>
+                                <div class="portfolio__addr">Г. Москва, ул. Братеевская 6/1</div>
+                            </div>
+                        </div>
+                        <div class="portfolio__item">
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g2.jpg" data-src="img/g2.jpg" style="background-image: url('img/g2.jpg');">
+                                <div class="portfolio__zoom"></div>
+                            </div>
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g3.jpg" style="background-image: url('img/g3.jpg');">
+                                <div class="portfolio__zoom"></div>
+                            </div>
+                            <div class="portfolio__item" data-fancybox="slide1" data-src="img/g4.jpg" style="background-image: url('img/g4.jpg');">
                                 <div class="portfolio__zoom"></div>
                             </div>
                         </div>
@@ -629,7 +634,7 @@
                     <li>Потолочные светильники и&nbsp;люстры</li>
                     <li>Электрическая и&nbsp;сантехническая разводка</li>
                 </ul>
-                <a href="javascript:void(0)" class="btn">Этот тариф мне подходит</a>
+                <a href="javascript:void(0)" data-modal="callback" class="btn">Этот тариф мне подходит</a>
             </div>
             <div class="tariff__item">
                 <div class="tariff__type green">Комфорт</div>
@@ -646,7 +651,7 @@
                     <li class="disable">Потолочные светильники и&nbsp;люстры</li>
                     <li class="disable">Электрическая и&nbsp;сантехническая разводка</li>
                 </ul>
-                <a href="javascript:void(0)" class="btn">Этот тариф мне подходит</a>
+                <a href="javascript:void(0)" data-modal="callback" class="btn">Этот тариф мне подходит</a>
             </div>
             <div class="tariff__item ribbon">
                 <div class="tariff__type orange">Индивидуальный</div>
@@ -654,7 +659,7 @@
                 <ul>
                     <li>Все работы выполняются <br> по дизайн-проекту с индивидуальными пожеланиями</li>
                 </ul>
-                <a href="javascript:void(0)" class="btn">Этот тариф мне подходит</a>
+                <a href="javascript:void(0)" data-modal="callback" class="btn">Этот тариф мне подходит</a>
             </div>
         </div>
     </div>
@@ -670,6 +675,8 @@
 
 <section class="callback form">
     <div class="container">
+        <img src="img/lamp.jpg" alt="">
+
         <div class="callback__block">
             <div class="callback__question">?</div>
             <h2>Остались <span class="orange">вопросы?</span></h2>
@@ -696,7 +703,6 @@
                 </div>
             </div>
         </div>
-        <img src="img/lamp.jpg" alt="">
     </div>
 </section>
 
@@ -790,7 +796,7 @@
                                     <div class="calculator__option-title">Пол</div>
                                     <div class="calculator__row">
                                         <div class="form-group">
-                                            <input type="radio" value="Ламинат" name="floor" id="f2">
+                                            <input type="radio" checked value="Ламинат" name="floor" id="f2">
                                             <label for="f2"><strong>Ламинат</strong></label>
                                         </div>
                                         <div class="form-group">
@@ -807,7 +813,7 @@
                                     <div class="calculator__option-title">Потолок</div>
                                     <div class="calculator__row">
                                         <div class="form-group">
-                                            <input type="radio" value="Натяжной" name="roof" id="o1">
+                                            <input type="radio" checked value="Натяжной" name="roof" id="o1">
                                             <label for="o1"><strong>Натяжной</strong></label>
                                         </div>
                                         <div class="form-group">
@@ -824,7 +830,7 @@
                                     <div class="calculator__option-title">Стены</div>
                                     <div class="calculator__row">
                                         <div class="form-group">
-                                            <input type="radio" value="Обои под покраску" name="walls" id="w1">
+                                            <input type="radio" checked value="Обои под покраску" name="walls" id="w1">
                                             <label for="w1"><strong>Обои под покраску</strong></label>
                                         </div>
                                         <div class="form-group">
@@ -960,34 +966,81 @@
 <!-- END CONTENT  -->
 <div class="backdrop">
     <div class="modal" data-modal="thanks">
-        <div class="modal__close"></div>
         <div class="modal__content">
-            <div class="modal__close"></div>
             <div class="modal__body">
                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="29.9999" cy="30.1127" r="28.8241" stroke="#00CE52"/>
-                    <rect class="l1" x="17.1621" y="30.1475" width="1.11981" height="13.9354" rx="0.559903" transform="rotate(-45 17.1621 30.1475)" fill="#00CE52"/>
-                    <rect class="l2" x="44.5547" y="21.1216" width="1.11981" height="25.7034" rx="0.559903" transform="rotate(45 44.5547 21.1216)" fill="#00CE52"/>
+                    <circle cx="29.9999" cy="30.1127" r="28.8241" stroke="#FF9900"/>
+                    <rect class="l1" x="17.1621" y="30.1475" width="1.11981" height="13.9354" rx="0.559903" transform="rotate(-45 17.1621 30.1475)" fill="#FF9900"/>
+                    <rect class="l2" x="44.5547" y="21.1216" width="1.11981" height="25.7034" rx="0.559903" transform="rotate(45 44.5547 21.1216)" fill="#FF9900"/>
                 </svg>
                 
-                <p><strong>Спасибо за заявку!</strong> <br> Наш менеджер свяжется с вами в течение 10 минут, <br> оставайтесь на связи</p>
+                <p><strong>Спасибо за заявку!</strong> <br> Наш менеджер свяжется с вами, <br> оставайтесь на связи</p>
                 <a href="javascript:void(0)" class="btn close">Закрыть</a>
             </div>
         </div>
     </div>
 
     <div class="modal" data-modal="callback">
-        <div class="modal__close"></div>
         <div class="modal__content">
-            <div class="modal__close"></div>
-            <div class="modal__header">
-                <div class="modal__title">Обратный звонок</div>
-            </div>
             <div class="modal__body">
-               <form action="">
-                   <input type="text" name="phonemask">
-                   <button type="submit" data-modal="thanks" class="btn">Жду звонок</button>
-               </form>
+                <h2>Обратный <span class="orange">звонок</span></h2>
+                <div class="subtitle">Оставьте свои контакты, и менеджер с вами свяжется</div>
+
+               <div class="callback form">
+                    <form action="">
+                        <span>Оставьте номер телефона</span>
+        
+                        <div class="form-group">
+                            <input id="phone-mask" type="text" placeholder="+7 (---) --- -- --">
+                            <button data-modal="thanks" class="btn">Оставить</button>
+                        </div>
+                    </form>
+               </div>
+
+               <div class="social">
+                    <span>Задать вопрос напрямую здесь:</span>
+                    <div class="social__list line">
+                        <div>
+                            <a href="javascript:void(0)" class="btn btn-blue"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-telegram"></use></svg> Telegram</a>
+                            <a href="javascript:void(0)" class="btn btn-green"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-whatsapp"></use></svg> What’s App</a>
+                            <a href="javascript:void(0)" class="btn btn-purple"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-viber"></use></svg> Viber</a>
+                        </div>
+                        <a href="javascript:void(0)">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-modal="order">
+        <div class="modal__content">
+            <div class="modal__body">
+                <h2>Заказать <span class="orange">ремонт</span></h2>
+                <div class="subtitle">Оставьте свои контакты, и мы свяжемся с вами для составления
+                    сметы</div>
+
+               <div class="callback form">
+                    <form action="">
+                        <span>Оставьте номер телефона</span>
+        
+                        <div class="form-group">
+                            <input id="phone-mask" type="text" placeholder="+7 (---) --- -- --">
+                            <button data-modal="thanks" class="btn">Оставить</button>
+                        </div>
+                    </form>
+               </div>
+
+               <div class="social">
+                    <span>Задать вопрос напрямую здесь:</span>
+                    <div class="social__list line">
+                        <div>
+                            <a href="javascript:void(0)" class="btn btn-blue"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-telegram"></use></svg> Telegram</a>
+                            <a href="javascript:void(0)" class="btn btn-green"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-whatsapp"></use></svg> What’s App</a>
+                            <a href="javascript:void(0)" class="btn btn-purple"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-viber"></use></svg> Viber</a>
+                        </div>
+                        <a href="javascript:void(0)">Политика конфиденциальности</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

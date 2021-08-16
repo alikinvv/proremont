@@ -20,9 +20,11 @@ $('body').on('submit', 'form', (e) => {
 });
 
 let features = new Swiper('.features .swiper-container', {
-    slidesPerView: 3,
-    slidesPerGroup: 3,
-    spaceBetween: 20,
+    slidesPerView: 1.3,
+    slidesPerGroup: 1,
+    spaceBetween: 10,
+    centeredSlides: true,
+    loop: true,
     autoplay: {
         delay: 5000,
         disableOnInteraction: false,
@@ -33,12 +35,25 @@ let features = new Swiper('.features .swiper-container', {
     },
     pagination: {
         el: '.features .swiper-pagination',
-    }
+    },
+    breakpoints: {
+        "768": {
+            slidesPerView: 2.3,
+            slidesPerGroup: 1,
+        },
+        "1024": {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            centeredSlides: false,
+            loop: false
+        },
+
+    },
 });
 
 let reviews = new Swiper('.reviews .swiper-container', {
-    slidesPerView: 'auto',
-    spaceBetween: 20,
+    slidesPerView: 1.2,
+    spaceBetween: 10,
     centeredSlides: true,
     loop: true,
     autoplay: {
@@ -47,24 +62,33 @@ let reviews = new Swiper('.reviews .swiper-container', {
     },
     pagination: {
         el: '.reviews .swiper-pagination',
-    }
+    },
+    breakpoints: {
+        "768": {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+        },
+
+    },
 });
 
 let portfolioMain = new Swiper('.portfolio .main', {
     slidesPerView: 1,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
-    allowTouchMove: false
+    allowTouchMove: false,
+    spaceBetween: 10,
 });
 let portfolioNavigation = new Swiper('.portfolio .nav', {
-    slidesPerView: 4,
+    slidesPerView: 1.2,
     spaceBetween: 10,
     loop: true,
     slideToClickedSlide: true,
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
+    centeredSlides: true,
+    // autoplay: {
+    //     delay: 5000,
+    //     disableOnInteraction: false,
+    // },
     navigation: {
         nextEl: '.portfolio .swiper-button-next',
         prevEl: '.portfolio .swiper-button-prev',
@@ -74,6 +98,18 @@ let portfolioNavigation = new Swiper('.portfolio .nav', {
     },
     thumbs: {
         swiper: portfolioMain,
+    },
+    breakpoints: {
+        "768": {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            centeredSlides: false,
+        },
+        "1024": {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+        },
+
     },
 });
 
@@ -160,7 +196,7 @@ $('body').on('click', '.calculator__next', (e) => {
 
     $(`.calculator__step[data-step="${activeStep + 1}"]`).hasClass('bg')? $('.calculator__content').addClass('bg') : $('.calculator__content').removeClass('bg');
 
-    if ($(window).width() <= 767) $("html, body").stop().animate({scrollTop:0});
+    if ($(window).width() <= 767) $("html, body").stop().animate({ scrollTop: $('.calculator').offset().top + 50 });
 });
 
 // go to prev step
@@ -275,7 +311,7 @@ let cost = () => {
             type = 14000;
             break;
         case 'Индивидуальный':
-            type = 8000;
+            type = 16000;
             break;
     }
 
