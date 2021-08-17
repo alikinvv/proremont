@@ -489,7 +489,7 @@ $('body').on('click', 'form button', function (e) {
   if ($(e.currentTarget).parent().find('input').val() === '' || $(e.currentTarget).parent().find('input').val().length !== 18) {
     $(e.currentTarget).parent().find('input').addClass('error');
   } else {
-    sendForm(user);
+    sendForm(user, $(e.currentTarget).parent().find('input').val());
     if (!$('.backdrop').hasClass('active')) $('.backdrop').addClass('active');
     $('.modal.active').removeClass('active');
     $(".modal[data-modal=\"thanks\"]").addClass('active');
@@ -499,6 +499,6 @@ $('body').on('click', 'form button', function (e) {
   }
 });
 
-var sendForm = function sendForm(user) {
+var sendForm = function sendForm(user, tel) {
   return false;
 };

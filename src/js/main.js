@@ -507,7 +507,7 @@ $('body').on('click', 'form button', (e) => {
     if ($(e.currentTarget).parent().find('input').val() === '' || $(e.currentTarget).parent().find('input').val().length !== 18) {
         $(e.currentTarget).parent().find('input').addClass('error');
     } else {
-        sendForm(user);
+        sendForm(user, $(e.currentTarget).parent().find('input').val());
 
         if (!$('.backdrop').hasClass('active')) $('.backdrop').addClass('active');
         $('.modal.active').removeClass('active');
@@ -519,6 +519,6 @@ $('body').on('click', 'form button', (e) => {
     }
 });
 
-let sendForm = (user) => {
+let sendForm = (user, tel) => {
     return false;
 }
