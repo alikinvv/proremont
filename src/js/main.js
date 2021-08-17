@@ -504,7 +504,7 @@ $('body').on('blur', 'input[type="text"]', (e) => {
 });
 
 $('body').on('click', 'form button', (e) => {
-    if ($(e.currentTarget).parent().find('input').val() === '') {
+    if ($(e.currentTarget).parent().find('input').val() === '' || $(e.currentTarget).parent().find('input').val().length !== 18) {
         $(e.currentTarget).parent().find('input').addClass('error');
     } else {
         sendForm(user);
