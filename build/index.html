@@ -37,7 +37,7 @@
                 <div class="header__phone-icon"><svg class="icon"><use xlink:href="img/symbol-defs.svg#icon-phone"></use></svg></div>
                 <div>
                     <a href="tel:+79899999999" class="header__phone-num">+7 (989) 999-99-99</a>
-                    <a href="javascript:void(0)" class="header__phone-link">Перезвоните мне</a>
+                    <a href="javascript:void(0)" class="header__phone-link" data-modal="callback">Перезвоните мне</a>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
 <!-- START CONTENT  -->
 
 <section class="main">
-    <img src="img/main-mobile.jpg" alt="" class="mobile">
+    <img src="img/main-mobile.png" alt="" class="mobile">
     <div class="container">
         <h1><span class="orange">Качественный</span> <br> ремонт</h1>
         <div class="subtitle">За адекватные деньги</div>
@@ -686,7 +686,7 @@
                 <span>Оставьте номер телефона</span>
 
                 <div class="form-group">
-                    <input id="phone-mask" type="text" placeholder="+7 (---) --- -- --">
+                    <input class="phone-mask" type="text" placeholder="+7 (---) --- -- --">
                     <button class="btn">Оставить</button>
                 </div>
             </form>
@@ -926,8 +926,8 @@
 
                         <div class="calculator__result">
                             <div>
-                                <span>Цена за м2</span>
-                                <div><i>от</i> <span class="price">00 000</span><strong>₽</strong> за м2</div>
+                                <span>Цена за м<sup>2</sup></span>
+                                <div><i>от</i> <span class="price">00 000</span><strong>₽</strong> за м<sup>2</sup></div>
                             </div>
                             <div>
                                 <span>Стоимость ремонта</span>
@@ -939,7 +939,7 @@
                             <span>Оставьте номер телефона, и мы свяжемся с вами, для уточнения цены</span>
 
                             <div class="form-group">
-                                <input id="phone-mask2" type="text" placeholder="+7 (---) --- -- --">
+                                <input class="phone-mask" type="text" placeholder="+7 (---) --- -- --">
                                 <button class="btn">Оставить</button>
                             </div>
 
@@ -991,8 +991,8 @@
                         <span>Оставьте номер телефона</span>
         
                         <div class="form-group">
-                            <input id="phone-mask" type="text" placeholder="+7 (---) --- -- --">
-                            <button data-modal="thanks" class="btn">Оставить</button>
+                            <input class="phone-mask" type="text" placeholder="+7 (---) --- -- --">
+                            <button class="btn">Оставить</button>
                         </div>
                     </form>
                </div>
@@ -1024,8 +1024,8 @@
                         <span>Оставьте номер телефона</span>
         
                         <div class="form-group">
-                            <input id="phone-mask" type="text" placeholder="+7 (---) --- -- --">
-                            <button data-modal="thanks" class="btn">Оставить</button>
+                            <input class="phone-mask" type="text" placeholder="+7 (---) --- -- --">
+                            <button class="btn">Оставить</button>
                         </div>
                     </form>
                </div>
@@ -1052,7 +1052,7 @@
             <img src="img/logo.svg" alt="" class="footer__logo">
             <div class="footer__phone">
                 <a href="tel:+79899999999" class="footer__phone-num">+7 (989) 999-99-99</a>
-                <a href="javascript:void(0)" class="footer__phone-link">Перезвоните мне</a>
+                <a href="javascript:void(0)" data-modal="callback" class="footer__phone-link">Перезвоните мне</a>
             </div>
         </div>
         <div class="footer__col">

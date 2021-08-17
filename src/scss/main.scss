@@ -128,6 +128,15 @@ input[type="text"] {
 	&:focus {
 		border-color: #141414;
 	}
+
+	&.error {
+		color: $red;
+		border-color: $red;
+
+		&::placeholder {
+			color: $red;
+		}
+	}
 }
 
 input[type="radio"] {
@@ -3754,9 +3763,9 @@ a {
 						padding-bottom: 0;
 						@include fsc;
 						flex-direction: column;
-	
-						strong {
-							margin-bottom: -20px;
+
+						br {
+							display: none;
 						}
 					}	
 				}
@@ -3840,13 +3849,17 @@ a {
 			}
 
 			.sand4 {
+				@include r(1350) {
+					bottom: 5%;
+				}
+
 				@include r(1023) {
 					display: none;	
 				}
 
 				position: absolute;
 				right: 3%;
-				bottom: -58%;
+				bottom: 3%;
 				pointer-events: none;
 				user-select: none;
 			}
@@ -4667,7 +4680,7 @@ a {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0.3);
+	background: rgba(0,0,0,0.8);
 	opacity: 0;
 	cursor: pointer;
 	display: flex;
@@ -4675,7 +4688,6 @@ a {
 	align-items: center;
 	z-index: -1;
 	transition: $trans;
-	backdrop-filter: blur(4px);
 
 	&.active {
 		opacity: 1;

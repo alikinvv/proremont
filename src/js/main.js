@@ -113,19 +113,11 @@ let portfolioNavigation = new Swiper('.portfolio .nav', {
     },
 });
 
-if ($('#phone-mask').length > 0) {
-    var phoneMask = IMask(
-        document.getElementById('phone-mask'), {
-            mask: '+{7} (000) 000 00 00'
-    });
-}
+let masks = document.querySelectorAll('.phone-mask');
 
-if ($('#phone-mask2').length > 0) {
-    var phoneMask = IMask(
-        document.getElementById('phone-mask2'), {
-            mask: '+{7} (000) 000 00 00'
-    });
-}
+masks.forEach((el) => {
+    IMask(el, { mask: '+{7} (000) 000 00 00' });
+});
 
 // calculator
 
@@ -502,3 +494,31 @@ $('body').on('click', '.backdrop', (e) => {
 $(document).keyup((e) => {
     if (e.keyCode === 27 && $('.backdrop').hasClass('active')) closeModal();
 });
+
+// form validation 
+
+$('body').on('blur', 'input[type="text"]', (e) => {
+    if ($(e.currentTarget).val() !== '') {
+        $(e.currentTarget).removeClass('error');
+    }
+});
+
+$('body').on('click', 'form button', (e) => {
+    if ($(e.currentTarget).parent().find('input').val() === '') {
+        $(e.currentTarget).parent().find('input').addClass('error');
+    } else {
+        sendForm(user);
+
+        if (!$('.backdrop').hasClass('active')) $('.backdrop').addClass('active');
+        $('.modal.active').removeClass('active');
+        $(`.modal[data-modal="thanks"]`).addClass('active');
+
+        setTimeout(() => {
+            $('.modal.active').find('svg').addClass('animate');
+        }, 100);
+    }
+});
+
+let sendForm = (user) => {
+    return false;
+}
