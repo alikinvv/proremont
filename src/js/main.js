@@ -1,19 +1,19 @@
-(function($) {
-    $.fn.inputFilter = function(inputFilter) {
-      return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
-        if (inputFilter(this.value)) {
-          this.oldValue = this.value;
-          this.oldSelectionStart = this.selectionStart;
-          this.oldSelectionEnd = this.selectionEnd;
-        } else if (this.hasOwnProperty("oldValue")) {
-          this.value = this.oldValue;
-          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-        } else {
-          this.value = "";
-        }
-      });
+(function ($) {
+    $.fn.inputFilter = function (inputFilter) {
+        return this.on('input keydown keyup mousedown mouseup select contextmenu drop', function () {
+            if (inputFilter(this.value)) {
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty('oldValue')) {
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            } else {
+                this.value = '';
+            }
+        });
     };
-  }(jQuery));
+})(jQuery);
 
 $('body').on('submit', 'form', (e) => {
     e.preventDefault();
@@ -37,17 +37,16 @@ let features = new Swiper('.features .swiper-container', {
         el: '.features .swiper-pagination',
     },
     breakpoints: {
-        "768": {
+        768: {
             slidesPerView: 2.3,
             slidesPerGroup: 1,
         },
-        "1024": {
+        1024: {
             slidesPerView: 3,
             slidesPerGroup: 3,
             centeredSlides: false,
-            loop: false
+            loop: false,
         },
-
     },
 });
 
@@ -64,11 +63,10 @@ let reviews = new Swiper('.reviews .swiper-container', {
         el: '.reviews .swiper-pagination',
     },
     breakpoints: {
-        "768": {
+        768: {
             slidesPerView: 'auto',
             spaceBetween: 20,
         },
-
     },
 });
 
@@ -85,10 +83,10 @@ let portfolioNavigation = new Swiper('.portfolio .nav', {
     loop: true,
     slideToClickedSlide: true,
     centeredSlides: true,
-    // autoplay: {
-    //     delay: 5000,
-    //     disableOnInteraction: false,
-    // },
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
     navigation: {
         nextEl: '.portfolio .swiper-button-next',
         prevEl: '.portfolio .swiper-button-prev',
@@ -100,16 +98,15 @@ let portfolioNavigation = new Swiper('.portfolio .nav', {
         swiper: portfolioMain,
     },
     breakpoints: {
-        "768": {
+        768: {
             slidesPerView: 2,
             slidesPerGroup: 2,
             centeredSlides: false,
         },
-        "1024": {
+        1024: {
             slidesPerView: 4,
             slidesPerGroup: 4,
         },
-
     },
 });
 
@@ -132,8 +129,8 @@ let updateProgressbar = () => {
     let currentProgress = Math.round((100 / (stepsCount - 1)) * (parseInt($('.calculator__step.active').attr('data-step')) - 1));
 
     $('.calculator__percent').text(currentProgress);
-    $('.calculator__line').animate({ 'width': `${currentProgress}%` });
-}
+    $('.calculator__line').animate({ width: `${currentProgress}%` });
+};
 
 // go to next step
 $('body').on('click', '.calculator__next', (e) => {
@@ -148,35 +145,35 @@ $('body').on('click', '.calculator__next', (e) => {
         }
 
         setTimeout(() => {
-            activeStep + 1 === 3  || activeStep + 1 === 4 ? $('.calculator__body').addClass('padding') : $('.calculator__body').removeClass('padding');
+            activeStep + 1 === 3 || activeStep + 1 === 4 ? $('.calculator__body').addClass('padding') : $('.calculator__body').removeClass('padding');
             activeStep + 1 === 5 ? $('.calculator__controls').addClass('hide') : $('.calculator__controls').removeClass('hide');
             $('.calculator__step').removeClass('active');
-            $(`.calculator__step[data-step="${activeStep + 1}"]`).addClass('active').addClass('visible');
+            $(`.calculator__step[data-step="${activeStep + 1}"]`)
+                .addClass('active')
+                .addClass('visible');
             updateProgressbar();
 
             if (activeStep + 1 === 5) {
-                
-
                 let full = new Odometer({
-                    el: $('.full')[0], 
+                    el: $('.full')[0],
                     format: '( ddd) dd',
                     theme: 'minimal',
-                    duration: 1000
+                    duration: 1000,
                 });
                 full.render();
                 $('.full').text(cost());
 
                 let result = new Odometer({
-                    el: $('.calculator__result .price')[0], 
+                    el: $('.calculator__result .price')[0],
                     format: '( ddd) dd',
                     theme: 'minimal',
-                    duration: 1000
+                    duration: 1000,
                 });
                 result.render();
                 $('.calculator__result .price').text(cost() / user.area);
             }
 
-            setTimeout(() => {                
+            setTimeout(() => {
                 $(`.calculator__progress-step[data-step="${activeStep + 1}"]`).addClass('active');
             }, 300);
         }, 200);
@@ -186,9 +183,14 @@ $('body').on('click', '.calculator__next', (e) => {
 
     if (activeStep > 0) $('.calculator__prev').removeClass('disable');
 
-    $(`.calculator__step[data-step="${activeStep + 1}"]`).hasClass('bg')? $('.calculator__content').addClass('bg') : $('.calculator__content').removeClass('bg');
+    $(`.calculator__step[data-step="${activeStep + 1}"]`).hasClass('bg')
+        ? $('.calculator__content').addClass('bg')
+        : $('.calculator__content').removeClass('bg');
 
-    if ($(window).width() <= 767) $("html, body").stop().animate({ scrollTop: $('.calculator').offset().top + 50 });
+    if ($(window).width() <= 767)
+        $('html, body')
+            .stop()
+            .animate({ scrollTop: $('.calculator').offset().top + 50 });
 });
 
 // go to prev step
@@ -200,7 +202,9 @@ $('body').on('click', '.calculator__prev', (e) => {
         activeStep - 1 === 3 || activeStep - 1 === 4 ? $('.calculator__body').addClass('padding') : $('.calculator__body').removeClass('padding');
         setTimeout(() => {
             $('.calculator__step').removeClass('active');
-            $(`.calculator__step[data-step="${activeStep - 1}"]`).addClass('active').addClass('visible');
+            $(`.calculator__step[data-step="${activeStep - 1}"]`)
+                .addClass('active')
+                .addClass('visible');
             $(`.calculator__progress-step[data-step="${activeStep}"]`).removeClass('active');
             setTimeout(() => {
                 updateProgressbar();
@@ -212,7 +216,9 @@ $('body').on('click', '.calculator__prev', (e) => {
 
     if (activeStep === 2) $('.calculator__prev').addClass('disable');
 
-    $(`.calculator__step[data-step="${activeStep - 1}"]`).hasClass('bg')? $('.calculator__content').addClass('bg') : $('.calculator__content').removeClass('bg');
+    $(`.calculator__step[data-step="${activeStep - 1}"]`).hasClass('bg')
+        ? $('.calculator__content').addClass('bg')
+        : $('.calculator__content').removeClass('bg');
 });
 
 $('body').on('click', '.calculator__step[data-step="1"] input[type="radio"]', (e) => {
@@ -245,7 +251,7 @@ let stepValidate = (step) => {
     } else {
         return false;
     }
-}
+};
 
 let user = {
     area: 0,
@@ -262,18 +268,19 @@ let user = {
     comment: null,
     project: null,
     time: null,
-}
+};
 
 let string = (num) => {
     return `.calculator__step[data-step="${num}"]`;
-}
+};
 
 let getUserInfo = (step) => {
     if (step === 1) {
         user.area = $('.area-value').val();
         user.rooms = $('.rooms-value').val();
         user.type = $(`${string(1)} input[type="radio"]:checked`).val();
-    } if (step === 2) {
+    }
+    if (step === 2) {
         user.floor = $(`${string(2)} input[name="floor"]:checked`).val();
         user.roof = $(`${string(2)} input[name="roof"]:checked`).val();
         user.walls = $(`${string(2)} input[name="walls"]:checked`).val();
@@ -283,14 +290,16 @@ let getUserInfo = (step) => {
         user.defend = $(`${string(2)} input[name="defend"]`).is(':checked') ? true : false;
         user.other = $(`${string(2)} input[name="other"]`).is(':checked') ? true : false;
         user.comment = $(`${string(2)} textarea`).val();
-    } if (step === 3) {
+    }
+    if (step === 3) {
         user.project = $(`${string(3)} input[name="project"]:checked`).val();
-    } if (step === 4) {
+    }
+    if (step === 4) {
         user.time = $(`${string(4)} input[name="time"]:checked`).val();
     } else {
         return false;
     }
-}
+};
 
 let cost = () => {
     let type = 0;
@@ -354,10 +363,10 @@ let cost = () => {
     let smartHouse = user.smartHouse ? 100000 : 0;
     let defend = user.defend ? 31000 : 0;
 
-    let sum = (user.area * type) + (user.area * floor) + (user.area * roof) + (user.area * walls) + toilet + (user.area * heatFloow) + smartHouse + defend;
+    let sum = user.area * type + user.area * floor + user.area * roof + user.area * walls + toilet + user.area * heatFloow + smartHouse + defend;
 
     return sum;
-}
+};
 
 var areaSlider = document.getElementById('slider-area');
 
@@ -365,25 +374,28 @@ noUiSlider.create(areaSlider, {
     start: [40],
     connect: 'lower',
     range: {
-        'min': 30,
-        'max': 70
+        min: 30,
+        max: 70,
     },
     format: wNumb({
-        decimals: 0
+        decimals: 0,
     }),
 });
 
 let areaSliderSteps = [];
 
 for (let i = 1; i <= $('#slider-area').next().find('span').length; i++) {
-    $('#slider-area').next().find(`span:nth-child(${i})`).attr('data-num', parseInt($('#slider-area').next().find(`span:nth-child(${i})`).text()))
+    $('#slider-area')
+        .next()
+        .find(`span:nth-child(${i})`)
+        .attr('data-num', parseInt($('#slider-area').next().find(`span:nth-child(${i})`).text()));
     areaSliderSteps.push(parseInt($('#slider-area').next().find(`span:nth-child(${i})`).text()));
 }
 
 let positionArea = 0;
 areaSlider.noUiSlider.on('update', function (values, handle) {
     for (let i = 1; i <= areaSliderSteps.length; i++) {
-        $('#slider-area').prev().find('input').val(values[0])
+        $('#slider-area').prev().find('input').val(values[0]);
 
         if (values[0] >= areaSliderSteps[i] && values[0] > positionArea) {
             $('#slider-area').next().find(`span[data-num="${areaSliderSteps[i]}"]`).addClass('active');
@@ -408,18 +420,21 @@ noUiSlider.create(roomsSlider, {
     connect: 'lower',
     step: 1,
     range: {
-        'min': 0,
-        'max': 9
+        min: 0,
+        max: 9,
     },
     format: wNumb({
-        decimals: 0
+        decimals: 0,
     }),
 });
 
 let roomsSliderSteps = [];
 
 for (let i = 1; i <= $('#slider-rooms').next().find('span').length; i++) {
-    $('#slider-rooms').next().find(`span:nth-child(${i})`).attr('data-num', parseInt($('#slider-rooms').next().find(`span:nth-child(${i})`).text()))
+    $('#slider-rooms')
+        .next()
+        .find(`span:nth-child(${i})`)
+        .attr('data-num', parseInt($('#slider-rooms').next().find(`span:nth-child(${i})`).text()));
     roomsSliderSteps.push(parseInt($('#slider-rooms').next().find(`span:nth-child(${i})`).text()));
 }
 
@@ -444,8 +459,9 @@ roomsSlider.noUiSlider.on('update', function (values, handle) {
     positionRooms = values[0];
 });
 
-$(".rooms-value").inputFilter(function(value) {
-    return /^-?\d*$/.test(value); });
+$('.rooms-value').inputFilter(function (value) {
+    return /^-?\d*$/.test(value);
+});
 
 $('body').on('blur', '.rooms-value', (e) => {
     roomsSlider.noUiSlider.set([e.target.value]);
@@ -460,7 +476,7 @@ function countChar(val) {
     } else {
         $('.textarea__count span').text(len);
     }
-};
+}
 
 // modals
 
@@ -482,7 +498,7 @@ let closeModal = () => {
     $('.backdrop').removeClass('active');
     $('.modal').removeClass('active');
     $('.modal').find('svg').removeClass('animate');
-}
+};
 
 $('body').on('click', '.modal__close, .modal .close', closeModal);
 
@@ -495,7 +511,7 @@ $(document).keyup((e) => {
     if (e.keyCode === 27 && $('.backdrop').hasClass('active')) closeModal();
 });
 
-// form validation 
+// form validation
 
 $('body').on('blur', 'input[type="text"]', (e) => {
     if ($(e.currentTarget).val() !== '') {
@@ -521,4 +537,4 @@ $('body').on('click', 'form button', (e) => {
 
 let sendForm = (user, tel) => {
     return false;
-}
+};
