@@ -106,6 +106,7 @@ let portfolioNavigation = new Swiper('.portfolio .nav', {
         1024: {
             slidesPerView: 4,
             slidesPerGroup: 4,
+            centeredSlides: false,
         },
     },
 });

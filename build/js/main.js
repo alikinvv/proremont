@@ -2,16 +2,16 @@
 
 (function ($) {
   $.fn.inputFilter = function (inputFilter) {
-    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
+    return this.on('input keydown keyup mousedown mouseup select contextmenu drop', function () {
       if (inputFilter(this.value)) {
         this.oldValue = this.value;
         this.oldSelectionStart = this.selectionStart;
         this.oldSelectionEnd = this.selectionEnd;
-      } else if (this.hasOwnProperty("oldValue")) {
+      } else if (this.hasOwnProperty('oldValue')) {
         this.value = this.oldValue;
         this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
       } else {
-        this.value = "";
+        this.value = '';
       }
     });
   };
@@ -38,11 +38,11 @@ var features = new Swiper('.features .swiper-container', {
     el: '.features .swiper-pagination'
   },
   breakpoints: {
-    "768": {
+    768: {
       slidesPerView: 2.3,
       slidesPerGroup: 1
     },
-    "1024": {
+    1024: {
       slidesPerView: 3,
       slidesPerGroup: 3,
       centeredSlides: false,
@@ -63,7 +63,7 @@ var reviews = new Swiper('.reviews .swiper-container', {
     el: '.reviews .swiper-pagination'
   },
   breakpoints: {
-    "768": {
+    768: {
       slidesPerView: 'auto',
       spaceBetween: 20
     }
@@ -82,10 +82,10 @@ var portfolioNavigation = new Swiper('.portfolio .nav', {
   loop: true,
   slideToClickedSlide: true,
   centeredSlides: true,
-  // autoplay: {
-  //     delay: 5000,
-  //     disableOnInteraction: false,
-  // },
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false
+  },
   navigation: {
     nextEl: '.portfolio .swiper-button-next',
     prevEl: '.portfolio .swiper-button-prev'
@@ -97,14 +97,15 @@ var portfolioNavigation = new Swiper('.portfolio .nav', {
     swiper: portfolioMain
   },
   breakpoints: {
-    "768": {
+    768: {
       slidesPerView: 2,
       slidesPerGroup: 2,
       centeredSlides: false
     },
-    "1024": {
+    1024: {
       slidesPerView: 4,
-      slidesPerGroup: 4
+      slidesPerGroup: 4,
+      centeredSlides: false
     }
   }
 });
@@ -126,7 +127,7 @@ var updateProgressbar = function updateProgressbar() {
   var currentProgress = Math.round(100 / (stepsCount - 1) * (parseInt($('.calculator__step.active').attr('data-step')) - 1));
   $('.calculator__percent').text(currentProgress);
   $('.calculator__line').animate({
-    'width': "".concat(currentProgress, "%")
+    width: "".concat(currentProgress, "%")
   });
 }; // go to next step
 
@@ -177,7 +178,7 @@ $('body').on('click', '.calculator__next', function (e) {
   if (activeStep + 1 === stepsCount) $('.calculator__next').addClass('disable');
   if (activeStep > 0) $('.calculator__prev').removeClass('disable');
   $(".calculator__step[data-step=\"".concat(activeStep + 1, "\"]")).hasClass('bg') ? $('.calculator__content').addClass('bg') : $('.calculator__content').removeClass('bg');
-  if ($(window).width() <= 767) $("html, body").stop().animate({
+  if ($(window).width() <= 767) $('html, body').stop().animate({
     scrollTop: $('.calculator').offset().top + 50
   });
 }); // go to prev step
@@ -360,8 +361,8 @@ noUiSlider.create(areaSlider, {
   start: [40],
   connect: 'lower',
   range: {
-    'min': 30,
-    'max': 70
+    min: 30,
+    max: 70
   },
   format: wNumb({
     decimals: 0
@@ -399,8 +400,8 @@ noUiSlider.create(roomsSlider, {
   connect: 'lower',
   step: 1,
   range: {
-    'min': 0,
-    'max': 9
+    min: 0,
+    max: 9
   },
   format: wNumb({
     decimals: 0
@@ -433,7 +434,7 @@ roomsSlider.noUiSlider.on('update', function (values, handle) {
 
   positionRooms = values[0];
 });
-$(".rooms-value").inputFilter(function (value) {
+$('.rooms-value').inputFilter(function (value) {
   return /^-?\d*$/.test(value);
 });
 $('body').on('blur', '.rooms-value', function (e) {
@@ -448,10 +449,9 @@ function countChar(val) {
   } else {
     $('.textarea__count span').text(len);
   }
-}
-
-; // modals
+} // modals
 // show modal
+
 
 $('body').on('click', '[data-modal]:not(.modal)', function (e) {
   if (!$('.backdrop').hasClass('active')) $('.backdrop').addClass('active');
@@ -478,7 +478,7 @@ $('body').on('click', '.backdrop', function (e) {
 
 $(document).keyup(function (e) {
   if (e.keyCode === 27 && $('.backdrop').hasClass('active')) closeModal();
-}); // form validation 
+}); // form validation
 
 $('body').on('blur', 'input[type="text"]', function (e) {
   if ($(e.currentTarget).val() !== '') {
