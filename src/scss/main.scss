@@ -265,7 +265,6 @@ input[type='checkbox'] {
             background: url('../img/icons/check.svg') no-repeat center;
             background-size: contain;
             opacity: 0;
-            margin-top: 1px;
         }
 
         strong {
@@ -708,6 +707,14 @@ a {
     margin-top: -60px;
     margin-bottom: 100px;
 
+    .swiper-pagination {
+        @include r(1279) {
+            padding-right: 0;
+        }
+
+        padding-right: 76px;
+    }
+
     .container {
         @include r(1400) {
             display: block;
@@ -808,6 +815,7 @@ a {
 .swiper {
     &-container {
         padding-bottom: 60px;
+        overflow: hidden;
     }
 
     &-slide {
@@ -2728,7 +2736,7 @@ a {
 }
 
 .reviews {
-    @include r(1279) {
+    @include r(1700) {
         overflow: hidden;
     }
 
