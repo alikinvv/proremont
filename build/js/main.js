@@ -71,16 +71,19 @@ var reviews = new Swiper('.reviews .swiper-container', {
 });
 var portfolioMain = new Swiper('.portfolio .main', {
   slidesPerView: 1,
-  watchSlidesVisibility: true,
-  watchSlidesProgress: true,
   allowTouchMove: false,
-  spaceBetween: 10
+  spaceBetween: 10,
+  thumbs: {
+    swiper: portfolioNavigation
+  },
+  navigation: {
+    nextEl: '.portfolio .swiper-button-next',
+    prevEl: '.portfolio .swiper-button-prev'
+  }
 });
 var portfolioNavigation = new Swiper('.portfolio .nav', {
   slidesPerView: 1.2,
   spaceBetween: 10,
-  loop: true,
-  slideToClickedSlide: true,
   centeredSlides: true,
   autoplay: {
     delay: 5000,
@@ -93,9 +96,6 @@ var portfolioNavigation = new Swiper('.portfolio .nav', {
   pagination: {
     el: '.portfolio .swiper-pagination'
   },
-  thumbs: {
-    swiper: portfolioMain
-  },
   breakpoints: {
     768: {
       slidesPerView: 2,
@@ -106,6 +106,16 @@ var portfolioNavigation = new Swiper('.portfolio .nav', {
       slidesPerView: 4,
       slidesPerGroup: 4,
       centeredSlides: false
+    }
+  },
+  on: {
+    click: function click() {
+      portfolioNavigation.slideTo(portfolioNavigation.clickedIndex);
+      portfolioMain.slideTo(portfolioNavigation.clickedIndex);
+      portfolioNavigation.autoplay.start();
+    },
+    slideChange: function slideChange() {
+      portfolioMain.slideTo(portfolioNavigation.activeIndex);
     }
   }
 });
